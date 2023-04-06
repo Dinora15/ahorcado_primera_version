@@ -4,12 +4,12 @@ package es.uned.master.java;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 
 /**
  * Clase que contiene la palabra incognita y métodos para verificar si se ha encontrado en función de una lista de letras introducidas
- * 
- * @author Raul
+ *
  *
  */
 public class Palabra {
@@ -33,17 +33,29 @@ public class Palabra {
 		letrasOK=0;	
 		
 	}
+	
+	
+	public Palabra (String palabraIN) {
+					
+		misterio=palabraIN.toUpperCase();
+				
+		letrasERROR=0;
+		letrasOK=0;	
+		
+	}
 
 	/**
 	 * ComprobarLetra :Aumenta el numero de letras de error si la letra introducida no pertence a la palabra incognito
 	 */
-	public void ComprobarLetra(char letra_in) {
+	public boolean ComprobarLetra(char letra_in) {
 		boolean letraEncontrada=false;
-		
+				
 		letraEncontrada=localizarLetra(letra_in);			
 		if(!letraEncontrada) {
-			letrasERROR++;			
-		}			
+			letrasERROR++;				
+		}
+		
+		return letraEncontrada;
 		
 	}
 	
@@ -53,7 +65,7 @@ public class Palabra {
 	 * @return 
 	 * 		int. Número de letras encontradas. Si una letra aparece n veces se contabiliza n veces.
 	  */
-	private int NumLetrasEncontradas(List<Character> letras) {
+	private int NumLetrasEncontradas(Set<Character> letras) {
 		int contador=0;
 		int index=0;
 		
@@ -70,7 +82,7 @@ public class Palabra {
 	 * @return 
 	 * 		boolean.Retorna true cuando el numero de letras encontradas coincide con el número de letras de la palabra
 	  */
-	public boolean PalabraEncontrada(List<Character> letras) {
+	public boolean PalabraEncontrada(Set<Character> letras) {
 		this.letrasOK=NumLetrasEncontradas(letras);		
 		return (this.misterio.length()==letrasOK);
 	}
@@ -99,7 +111,7 @@ public class Palabra {
 	 * @return 
 	 * 		boolean.Retorna true si podemos continuar probando letras
 	  */
-	public boolean ContinuarJuego(List<Character> letras) {	
+	public boolean ContinuarJuego(Set<Character> letras) {	
 		boolean retorno=false;
 		
 		if (PermitirIntentos() && !PalabraEncontrada(letras))
@@ -137,7 +149,8 @@ public class Palabra {
 	* @return 
 	 * 		boolean.Retorna true cuando el numero de letras encontradas coincide con el número de letras de la palabra
 	  */
-	public void EscribirPalabra(List<Character> letras) {
+	//public void EscribirPalabra(List<Character> letras) {
+	public void EscribirPalabra(Set<Character> letras) {
 		
 		String cadena="Palabra: ";
 		int index=0;

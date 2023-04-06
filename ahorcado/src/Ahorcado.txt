@@ -1,0 +1,6 @@
+El fichero rar contiene la carpeta main del proyecto.
+El juego consta de 4 clases:
+	- Driver: Clase para iniciar el juego
+	- Ahorcado: Clase principal del juego con un único método publico "jugar"
+	- Horca: Clase de enumerados que contiene los strings de los diferentes dibujos posibles de la horca
+	- Palabras: Clase que genera la palabra incognito y ofrece diferentes métodos para ir dibujando las palabras, las letras intentadas y la horca
